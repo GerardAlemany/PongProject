@@ -9,7 +9,7 @@ public class ClientPong
     public ClientPong() 
     {
     }
-    
+    /*Class Main del CLIENT. Inicialitza classes i engega la GUI. (Potser el bucle while hauria d'anar a dins de ClientGUI en un run o algo) */
     public static void main(String[] args) throws InterruptedException, IOException 
     {
 
