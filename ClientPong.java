@@ -8,21 +8,18 @@ public class ClientPong
 {
     public ClientPong() 
     {
-        //constructor pending
     }
     
-    public static void main(String[] args) throws InterruptedException 
+    public static void main(String[] args) throws InterruptedException, IOException 
     {
 
-        ModelTauler model= new ModelTauler();
-        ControladorCom cCom = new ControladorCom
-        ClientPongStream cpg= new 
-        ControladorInputUser control= new ControladorInputUser(model);
-        ClientGUI frame= new ClientGUI(control);
-        ClientPongStream stream= new ClientPongStream();
-        //stream.start(); No sé si realmente hay que hacer que sea un Thread
+        ModelTauler modelClient= new ModelTauler();   //Model: info dels elements del joc.
+        ClientGUI frame= new ClientGUI(modelClient);  //Vista - GUI del client.
+        ControladorCom cCom = new ControladorCom(frame, modelClient); //Controlador de Vista i Model
+        ClientPongStream stream= new ClientPongStream(cCom);
+        ControladorInputUser control= new ControladorInputUser(stream);
         frame.crearMostrarGUI();
-        
+        stream.start();
         while (true) 
         {
             frame.repaint();
